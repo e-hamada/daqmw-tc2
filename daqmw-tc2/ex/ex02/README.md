@@ -1,105 +1,37 @@
-(テーマ) C++の復習
-==================
-クラスファイルを作りそれを利用するプログラムを作る
+(テーマ) Webモードでシステムを動かす
+====================================
 
-ファイル
---------
+DAQ-Middlewareを稼働させる方法にはコンソールモードと
+Webモードがある。コンソールモードで動かす方法はすでに
+試したので、次にWebモードで動かすのを試してみる。
 
-* MyClass.h   (クラス宣言)
-* MyClass.cpp (実装)
-* main.cpp    (MyClassを使うプログラム)
+まずrootになり、apacheが起動しているかどうかを確認する。
 
-C++プログラムはmain()関数からスタートする。main()関数は
-main.cppに書いてある(かならずmain.cppというファイル名で
-なければいけないわけではない)。
+    root#  systemctl status httpd.service
 
-実習内容
---------
+Active: active (running)  とでる場合はhttpdは起動しているので
+OK。
 
-ファイルをコピーしてmakeで実行ファイルを作る:
+Active: inactive (dead)とでた場合は起動していないので起動する:
 
-    % cd ~/daqmw-tc/sandbox
-    % cp -r ../ex/ex02 .
-    % cd ex02
-    % make
+    root# systemctl status httpd.service
 
-実行前にコードを見て結果を予想する。次に
-実行ファイル main を実行してみる:
+OS起動時に自動起動するようにするためには以下のコマンドを実行する:
 
-    % ./main
+    root# systemctl enable httpd.service
 
-またMakefileの中身を見てみる。Makefileについては以下を参照。
+次にDAQ-Middlewareの起動の説明に移る。
 
-    % make clean
+Webモードで起動するにはrun.pyを-cなしで起動する。
 
-で*.oファイル、および実行ファイル(今の場合はmain)が消されることも
-確認しておく。
+    % run.py -l sample.xml
 
-コードの変更
-------------
+なにも表示されなければ正常に起動できている。
+Webブラウザを使って下記サイトにアクセスするとWeb UIが起動する
 
-- MyClass.h、MyClass.cppにメンバー変数m_zを追加し、set_z()メソッド、
-  get_z()メソッドを追加する。
-- main.cppを変更し、set_z()、get_z()を使って値をセット、ゲットする
-  プログラムを書く。
+    http://localhost/daqmw/operatorPanel/operatorPanel0.html
 
-Makefileの確認
---------------
+configure, begin, end, unconfigureのボタンがあるので適当にボタンを
+押す。状態により押しても無意味なボタンはグレーアウトしている。
 
-    % g++ main.c MyClass.c -o main
-
-のようにコマンドを投入してもよいが、コードの変更後は再びこの
-コマンドを投入することになるのでMakefileを使って実行ファイル生成は
-makeとだけ入力するとできるようにしておいたほうがよい。
-
-Makefile中での変数は
-
-    CC = g++
-    PROG = main
-
-のように定義する。変数を参照するには変数名先頭に $ (dollar)を置き
-変数名を () でくくる。
-
-ある変数に文字列を追加するには += で追加することができる。ここでは
-
-    OBJS += main.o
-    OBJS += MyClass.o
-
-のようにOBJS変数に2個の文字列を追加している。
-
-Makefileでは
-
-    target: dependencies
-        dependenciesからtargetを作成するコマンド
-
-という形式で実行するコマンドを書く(2行目のコマンドを書く行の
-先頭はスペースではなくてタブである必要がある)。上のように書くと
-targetファイルとdependenciesに書かれたファイル群のタイムスタンプを
-比較し、targetファイルのほうが古ければ(あるいはtargetファイルがなければ)
-2行目に書いたコマンドを実行しtargetファイルを作成する。
-
-Makefile中には複数のターゲットを書くことができる。引数なしに単にmakeと
-入力して実行するとMakefile中の最初のターゲットを生成するコマンドが
-実行される。通常、最終目標物ターゲットをallとして
-
-    all: program_name
-
-と書いておく。
-
-このMakefileを見ると
-
-    $(PROG): $(OBJS)
-
-と書いてあり、 $(OBJS) から $(PROG) を作ることを示してあるが、実際に
-実行するコマンドは書いていない。これはmakeコマンドが
-*.oファイルから実行ファイルを作成するコマンドをしっているからである。
-この機能を利用することでMakefileの記述を簡略化することができる。
-
-その他makeについての詳細はコマンドラインから
-
-    info make
-
-あるいはWeb上で http://www.gnu.org/software/make/manual/make.html から
-参照できる。
-
-
+ラン番号は自動で1づつ増えていくようになっている。
