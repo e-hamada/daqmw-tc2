@@ -75,7 +75,7 @@ Makeしたあと、DAQ Middlewareを起動する。
 [課題]
 --------------------------------
 daq_dummy,daq_configure, daq_stopでも、daq_configureやdaq_runと同様にログに確認を行う。
-
+また、SampleMonitorコンポーネントでも同様のことを行うこと。
 
 
 
