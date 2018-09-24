@@ -1,84 +1,100 @@
-(テーマ)ログの確認（状態遷移の確認）
-====================================
+(テーマ) DAQ-Middleware付属サンプルコンポーネントを動かしてみる
+===============================================================
 
-ログはコンポーネントごとに作成され、/tmp/daqmw/log.(コンポーネント名)Compに置かれる。
-ここではSampleReaderのログを確認し、SampleReaderの状態遷移の確認を行う。
+DAQ-Middlewareでのデータ収集システムがどういうふうに動くのか
+かんじをつかむために付属のサンプルコンポーネントを動かしてみる。
 
+以下のような簡単なシステムを試してみる
 
-ログの表示
+emulator - SampleReader - SampleMonitor
+
+ソースコードのコピーとコンパイル
 --------------------------------
-ターミナルを開いて、下記を実行する。
 
-    % tail -f /tmp/daqmw/log.SampleReaderComp
+サンプルコンポーネントのソースコードは /usr/share/daqmw/examples ディレクトリ
+以下に入っているのでそれをコピーする。
 
-すると、SampleReaderのログが表示される。tailコマンドに-fオプションを追加させているので、ログが
-更新されるとその分の表示も行われる。
+    % mkdir ~/MyDaq
+    % cd ~/MyDaq
+    % cp -r /usr/share/daqmw/examples/SampleReader .
+    % cp -r /usr/share/daqmw/examples/SampleMonitor .
 
-別のターミナルを開いて、ex11で行ったようにSampleReaderComp、SampleMonitorCompおよびこれらを
-統括するDaqOperatorを起動する。
+続いてコンパイルを行う
+
+    % cd SampleReader
+    % make
+    (SampleReaderCompというファイル名の実行形式ファイルができる)
+    % cd ../SampleMonitor
+    % make
+    (SampleMonitorCompというファイル名の実行形式ファイルができる)
+    % cd ..
+
+コンフィギュレーションファイルの作成
+------------------------------------
+
+SampleReader - SampleMonitor システムのコンフィギュレーションは
+/usr/share/daqmw/conf/sample.xml にあるのでこれをコピーする。
 
     % cd ~/MyDaq
+    % cp /usr/share/daqmw/conf/sample.xml .
+
+sample.xml中にexecPath(2箇所ある)というタグでSampleReaderComp、SampleMonitorComp
+の実行形式ファイルがあるパスを指定しているので正しいパスかどうか
+確認する。
+
+コンポーネントの起動
+--------------------
+
+SampleReaderComp、SampleMonitorCompおよびこれらを統括するDaqOperator
+を起動する。起動はrun.pyというコマンドを使う。run.pyの引数に
+コンフィギュレーションファイルを指定する。
+run.pyはコンフィギュレーションファイルを解析し、execPathタグで指定してある
+ファイルを起動し、/usr/libexec/daqmw/DaqOperator/DaqOperatorCompを起動する。
+
+(註)
+
+DaqOperatorCompは通常書き換える必要がないのですでにコンパイル済みのものが入っている。
+
+    % run.py -c -l sample.xml
+
+ あるいはオプションは、まとめることができるので
+
     % run.py -cl sample.xml
 
+オプションの意味は、-l: run.pyを起動したPCでDAQコンポーネントを起動する。
+-c: コンソールモードでシステムを起動する である。
 
-数値入力待ちになっているので0を押しエンターキーを押すとconfiugredになる。すると、別ターミナルで開いていた
-ログに下記のようなメッセージが追加される。
+ターミナルにDaqOperatorが出力するパネルがでる。
 
-    *** SampleReader::configure
+システム起動
+------------
 
-さらに、1を押すとラン番号を入力するよう、うながされるので適当に番号(1とか2とか)
+数値入力待ちになっているので0を押しエンターキーを押すとconfiugredになる
+(以下数字キーを押したあとは同様にエンターキーを押すこと)。
+1を押すとラン番号を入力するようなながされるので適当に番号(1とか2とか)
 を入力する。ラン番号を入力するとデータ収集を開始する。
-すると、以下のようなメッセージがログに追加される。
+FATALエラーとなるが今の手順ではエミュレータを起動していないのでこれは
+正しい動作である。
+2を押すとデータ収集を終了する。
 
-    *** SampleReader::start
+エミュレータの起動
+------------------
 
-2を押してデータ収集システムを終了させ、3を押しunconfigured状態にしたあと control-cを押すとシステムが終了する。
+ターミナルを新たに開いて
 
-ログ出力方法
---------------------------------
-次にプログラムのどの箇所でログ出力を定義しているのかを確認する。
-~/MyDaq/SampleReaderにあるSampleReader.cppの中を見ると関数daq_configure()がある。configured状態に遷移すると、
-この関数が一度だけ実行される。この関数の初めに
+    % daqmw-emulator
 
-    std::cerr << "*** SampleReader::configure" << std::endl;
+でデータ生成エミュレータを起動する。起動後このターミナルはさわらないので
+じゃまならアイコン化しておくなどする。
 
-と記載されているが、この箇所がログを出力するための記述である。また、関数daq_start()はデータ収集が開始された直後に
-一度だけ実行される関数であり、この関数にも同様にログ出力の記述がされている。
-これらのように、
+データ収集再開
+--------------
 
-    std::cerr << "◯◯◯" << std::endl;
+データ生成エミュレータが起動している状態で1を押すとデータ収集がされ、
+画面上にヒストグラムが表示される。
 
-と記載することで、◯◯◯の部分がログファイルに出力される。
+システム終了
+------------
 
-ログはコンポーネントのプログラムを作る上で、役に立つことがよくある。例えば、何らかの理由でプログラムが
-止まってしまった場合、ログを利用することで止まってしまう場所を特定することができる。
-
-
-SampleReaderの編集
---------------------------------
-関数daq_run()の開始直後に以下のような記述を追加してほしい。
-
-    std::cerr << "*** SampleReader::run" << std::endl;
-
-Makeしたあと、DAQ Middlewareを起動する。
-
-    % cd ~/MyDaq
-    % run.py -cl sample.xml
-
-データ収集を開始すると、
-
-    *** SampleReader::run
-
-というメッセージがログに繰り返し表示されることが確認できる。
-これはデータ収集がされている間は関数daq_run()が繰り返し、実行されるからである。
-
-[課題]
---------------------------------
-daq_dummy,daq_configure, daq_stopでも、daq_configureやdaq_runと同様にログに確認を行うこと。
-また、SampleMonitorコンポーネントでも同様になることを確認する。
-
-
-
-
-
-
+2を押してデータ収集システムを終了させ、3を押しunconfigured状態にしたあと
+control-cを押すとシステムが終了する。
