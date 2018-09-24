@@ -1,0 +1,6 @@
+*
+!.gitignore
+!README.md
+!ex1
+!ex1/Makefile
+!ex1/sample.cpp
