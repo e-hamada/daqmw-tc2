@@ -74,7 +74,7 @@ Makeしたあと、DAQ Middlewareを起動する。
 
 [課題]
 --------------------------------
-daq_dummy,da_configure, daq_stopでも、daq_configureやdaq_runと同様にログに確認を行う。
+daq_dummy,daq_configure, daq_stopでも、daq_configureやdaq_runと同様にログに確認を行う。
 
 
 
