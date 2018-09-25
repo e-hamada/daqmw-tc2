@@ -29,17 +29,20 @@ RawDataLoggerコンポーネントの作成
 ------------------------------------
 
 以下のコマンドを実行し、sample.xmlをreader-logger.xmlとしてコピーする。
+
     % cp sample.xml reader-logger.xml
 
 reader-logger.xmlを以下の様に変更し、SampleReaderとSampleMonitorを使ったシステムのための
 コンフィグレーションファイルを作成する。
 
 利用するコンポーネント名の指定
+
     % （変更前）<component cid="SampleMonitor0">
     % （変更後）<component cid="SampleLogger0">
 
 コンポーネントのインスタンス名の指定
-    % （変更前）<instName>SampleMonitor0.rtc</instName>
+
+% （変更前）<instName>SampleMonitor0.rtc</instName>
     % （変更後）<instName>SampleLogger0.rtc</instName>
 
 
