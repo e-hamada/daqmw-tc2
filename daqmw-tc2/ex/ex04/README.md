@@ -92,8 +92,8 @@ SampleReader,Dispatcher,SampleLogger,SampleMonitorの4つのコンポーネン�
 Dispatcherの機能は1つのコンポーネントからデータを受け取り、
 受け取ったデータを2つのコンポーネントに送ることである。
 
-このコンポーネントは、/usr/share/daqmw/examples/Dispatcher/に置いてあるので、他のコンポーネントと同様に
-コピーしてからmakeを行うこと
+このコンポーネントは、/usr/share/daqmw/examples/Dispatcher/に置いてある。
+他のコンポーネントと同様の処理を行い、利用すること。
 
 
 
