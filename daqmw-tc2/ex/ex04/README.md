@@ -39,14 +39,23 @@ reader-logger.xmlを以下の様に変更し、SampleReaderとSampleMonitorを�
     % （変更前）<component cid="SampleMonitor0">
     % （変更後）<component cid="SampleLogger0">
 
-コンポーネントのインスタンス名の指定
-
+    コンポーネントのインスタンス名の指定
     % （変更前）<instName>SampleMonitor0.rtc</instName>
     % （変更後）<instName>SampleLogger0.rtc</instName>
 
+    コンポーネントの実行形式ファイルのパスの指定
+    % （変更前）<execPath>/home/daq/MyDaq/SampleMonitor/SampleMonitorComp</execPath>
+    % （変更後）<execPath>/home/daq/MyDaq/SampleLogger/SampleLoggerComp</execPath>
 
+    インポートの名の指定
+    % （変更前）<inPort from="SampleReader0:samplereader_out">samplemonitor_in</inPort>
+    % （変更後）<inPort from="SampleReader0:samplereader_out">samplelogger_in</inPort>
 
-
+   パラメータの指定
+   % （変更前）<param pid="monitorUpdateRate">20</param>
+   % （変更後）<param pid="dirName">/tmp</param>
+   %           <param pid="isLogging">yes</param>
+   %           <param pid="maxFileSizeInMegaByte">1024</param>
     
 
 
