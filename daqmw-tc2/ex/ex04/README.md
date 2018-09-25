@@ -129,6 +129,10 @@ Dispatcherの機能は1つのコンポーネントからデータを受け取り
 
 
 
+dispatcherコンポーネントは2個のアウトポートがあるため、上のDispatcherコンポーネントの部分には、
+outPortが2つ記載されている。このアウトポートがSampleLoggerとSampleMonitorのインポートに接続されることになる。
+
+
 
 
 
