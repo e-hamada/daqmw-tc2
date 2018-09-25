@@ -51,11 +51,11 @@ reader-logger.xmlを以下の様に変更し、SampleReaderとSampleMonitorを�
     % （変更前）<inPort from="SampleReader0:samplereader_out">samplemonitor_in</inPort>
     % （変更後）<inPort from="SampleReader0:samplereader_out">samplelogger_in</inPort>
 
-   パラメータの指定
-   % （変更前）<param pid="monitorUpdateRate">20</param>
-   % （変更後）<param pid="dirName">/tmp</param>
-   %           <param pid="isLogging">yes</param>
-   %           <param pid="maxFileSizeInMegaByte">1024</param>
+    パラメータの指定
+    % （変更前）<param pid="monitorUpdateRate">20</param>
+    % （変更後）<param pid="dirName">/tmp</param>
+    %           <param pid="isLogging">yes</param>
+    %           <param pid="maxFileSizeInMegaByte">1024</param>
     
 
 
