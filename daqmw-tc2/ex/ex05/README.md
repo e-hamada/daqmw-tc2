@@ -1,5 +1,84 @@
-(テーマ) バイナリファイルの読みだし
+(テーマ) パラメータ取得
 ===================================
+
+ex04で、コンフィグレーションファイルの中で各コンポーネントに渡すパラメータに触れた。
+ここでは、そのパラメータの設定方法について学習する。
+
+
+コンポーネントプログラムにおけるパラメータ取得処理
+--------------------------------------------------
+
+SampleReaderのSampleReader.cppの中を見ると、daq_configure()で
+
+
+    ::NVList* paramList;
+    paramList = m_daq_service0.getCompParams();
+    parse_params(paramList);
+
+と記載されている。
+
+ここで、コンフィグレーションファイルにて、以下のように設定した
+パラメータがparamListに格納され、そのparamListを引数にしたparse_params(::NVList* list)が呼ばれる。
+
+
+    <param pid="srcAddr">127.0.0.1</param>
+    <param pid="srcPort">2222</param>
+
+
+この中のfor文の中で
+
+     std::string sname  = (std::string)(*list)[i].value;
+     std::string svalue = (std::string)(*list)[i+1].value;
+
+と記載されている。paramListの中では偶数番目には<param pid="〇〇〇">□□□</param>の〇〇〇が、
+奇数番目には<param pid="〇〇〇">□□□</param>の□□□<が格納されている。
+
+for文のi = 0の場合だと、snameは”srcAddr”、svalueは”127.0.0.1”が入るようになる。
+
+
+パラメータの追加
+--------------------------------------------------
+
+    %  cd ~/MyDaq/
+    %  cp -r SampleReader SampleReaderPara
+
+と実行し、SampleReaderをコピーしたSampleReaderParaにパラメータを追加する処理を追加する。
+
+ここでは、SampleReaderParaディレクトリの中のSampleReader.cppのparse_params(::NVList* list)を以下のように修正する。
+
+    （修正前）
+    if ( sname == "srcPort" ) {
+        srcPortSpecified = true;
+        if (m_debug) {
+            std::cerr << "source port: " << svalue << std::endl;
+        }
+        char* offset;
+        m_srcPort = (int)strtol(svalue.c_str(), &offset, 10);
+    }
+
+
+    （修正後）
+    if ( sname == "srcPort" ) {
+        srcPortSpecified = true;
+        if (m_debug) {
+            std::cerr << "source port: " << svalue << std::endl;
+        }
+        char* offset;
+        m_srcPort = (int)strtol(svalue.c_str(), &offset, 10);
+    }
+    if ( sname == "TEST" ) {
+        srcPortSpecified = true;
+        if (m_debug) {
+            std::cerr << "source port: " << svalue << std::endl;
+        }
+        char* offset;
+        m_srcPort = (int)strtol(svalue.c_str(), &offset, 10);
+    }
+
+
+
+
+
 
 バイナリファイルを読んでみる。
 
