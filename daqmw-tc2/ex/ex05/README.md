@@ -30,8 +30,8 @@ SampleReaderのSampleReader.cppの中を見ると、daq_configure()で
      std::string sname  = (std::string)(*list)[i].value;
      std::string svalue = (std::string)(*list)[i+1].value;
 
-と記載されている。paramListの中では偶数番目には<param pid="〇〇〇">□□□</param>の〇〇〇が、
-奇数番目には<param pid="〇〇〇">□□□</param>の□□□<が格納されている。
+と記載されている。paramListの中では偶数番目には "<param pid="〇〇〇">□□□</param>" の〇〇〇が、
+奇数番目には <param pid="〇〇〇">□□□</param> の □□□ が格納されている。
 
 for文のi = 0の場合だと、snameは”srcAddr”、svalueは”127.0.0.1”が入るようになる。
 
