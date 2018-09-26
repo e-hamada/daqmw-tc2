@@ -2,7 +2,8 @@
 ================================
 
 この章では、まずSampleReaderおよびSampleMonitorの処理について説明する。
-処理を理解した上で、SampleReader-SampleMonitor間のデータを確認する。
+処理を理解した上で、SampleReader-SampleMonitor間のデータを確認できる
+処理を追加する。
 
 DAQ-Middlwareオリジナルのデータ構造があるため、
 SampleReader-SampleMonitor間のデータには
