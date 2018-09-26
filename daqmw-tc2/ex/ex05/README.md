@@ -97,7 +97,7 @@ samplePara.xmlを以下のように編集する。
     (編集前）<execPath>/home/daq/MyDaq/SampleReader/SampleReaderComp</execPath>
     (編集後）<execPath>/home/daq/MyDaq/SampleReaderPara/SampleReaderComp</execPath>
 
-　　  パラメータの追加
+    パラメータの追加
     (編集前)<params>
                 <param pid="srcAddr">127.0.0.1</param>
                 <param pid="srcPort">2222</param>
