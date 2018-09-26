@@ -85,5 +85,35 @@ for文のi = 1の時に、snameに”srcAddr”、svalueに”2222”が入る�
 対する値が格納されるようになっている。
 また、test変数の値はログに記載されるようにしている。
 
+次にコンフィグレーションファイルを編集する。
+以下のコマンドを実行し、sample.xmlをsamplePara.xmlにコピーする。
+
+    %  cd ~/MyDaq/
+    %  cp cp sample.xml samplePara.xml
+
+samplePara.xmlを以下のように編集する。
+
+    execPathの編集（SampleReaderからSampleReaderParaに変更）
+    (編集前）<execPath>/home/daq/MyDaq/SampleReader/SampleReaderComp</execPath>
+    (編集後）<execPath>/home/daq/MyDaq/SampleReaderPara/SampleReaderComp</execPath>
+
+　　パラメータの追加
+    (編集前)
+　　<params>
+         <param pid="srcAddr">127.0.0.1</param>
+         <param pid="srcPort">2222</param>
+    </params>
+
+    (編集後)
+　　<params>
+         <param pid="srcAddr">127.0.0.1</param>
+         <param pid="srcPort">2222</param>
+         <param pid="TEST">testtest</param>
+    </params>
+
+
+編集後、samplePara.xmlからDAQ Middlewareを起動させ、
+configureした後にログを見るとtest変数の値がログに記載される。
+
 
 
