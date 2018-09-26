@@ -9,7 +9,7 @@ ex04で、コンフィグレーションファイルの中で各コンポーネ�
 --------------------------------------------------
 
 sample.xml等のコンフィグレーションファイルのSampleReaderの設定では、以下のように設定してある。
-ここで、srcAddrやsrcPortはpidであり、127.0.0.1や2222はそのpidの値ということを示している。
+ここで、srcAddrやsrcPortはpidであり、127.0.0.1や2222はそのpidに対する値を示している。
 
     <param pid="srcAddr">127.0.0.1</param>
     <param pid="srcPort">2222</param>
@@ -26,7 +26,7 @@ daq_configure()で
 と記載されている。
 
 
-コンフィグレーションファイルで指定したパラメータ（pidやそのpidの値）はparamListに格納され、
+コンフィグレーションファイルで指定したパラメータ（pidやそのpidに対する値）はparamListに格納され、
 そのparamListを引数にしたparse_params(::NVList* list)が呼ばれる。
 
 この中のfor文の中で
@@ -35,7 +35,7 @@ daq_configure()で
      std::string svalue = (std::string)(*list)[i+1].value;
 
 と記載されている。paramListの中では偶数番目にはpidが、
-奇数番目にはpidの値が格納されている。
+奇数番目にはpidに対する値が格納されることになる。
 
 SampleReaderのの場合だとfor文のi = 0の時に、snameに”srcAddr”、svalueに”127.0.0.1”が入る。
 for文のi = 1の時に、snameに”srcAddr”、svalueに”2222”が入る。
