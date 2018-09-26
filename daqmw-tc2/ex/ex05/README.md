@@ -8,8 +8,16 @@ ex04で、コンフィグレーションファイルの中で各コンポーネ�
 コンポーネントプログラムにおけるパラメータ取得処理
 --------------------------------------------------
 
-SampleReaderのSampleReader.cppの中を見ると、daq_configure()で
+sample.xmlなどのコンフィグレーションファイルのSampleReaderの設定では、以下のように設定してある。
+ここで、srcAddrやsrcPortはpidであり、127.0.0.1や2222はそのpidの値ということを示している。
 
+    <param pid="srcAddr">127.0.0.1</param>
+    <param pid="srcPort">2222</param>
+
+
+
+次にコンポーネントのプログラムであるSampleReaderのSampleReader.cppの中を見ると、
+daq_configure()で
 
     ::NVList* paramList;
     paramList = m_daq_service0.getCompParams();
@@ -17,23 +25,20 @@ SampleReaderのSampleReader.cppの中を見ると、daq_configure()で
 
 と記載されている。
 
-ここで、コンフィグレーションファイルにて、以下のように設定した
-パラメータがparamListに格納され、そのparamListを引数にしたparse_params(::NVList* list)が呼ばれる。
 
-
-    <param pid="srcAddr">127.0.0.1</param>
-    <param pid="srcPort">2222</param>
-
+コンフィグレーションファイルで指定したパラメータ（pidやそのpidの値）はparamListに格納され、
+そのparamListを引数にしたparse_params(::NVList* list)が呼ばれる。
 
 この中のfor文の中で
 
      std::string sname  = (std::string)(*list)[i].value;
      std::string svalue = (std::string)(*list)[i+1].value;
 
-と記載されている。paramListの中では偶数番目には "<param pid="〇〇〇">□□□</param>" の〇〇〇が、
-奇数番目には <param pid="〇〇〇">□□□</param> の □□□ が格納されている。
+と記載されている。paramListの中では偶数番目にはpidが、
+奇数番目にはpidの値が格納されている。
 
-for文のi = 0の場合だと、snameは”srcAddr”、svalueは”127.0.0.1”が入るようになる。
+SampleReaderのの場合だとfor文のi = 0の時に、snameに”srcAddr”、svalueに”127.0.0.1”が入る。
+for文のi = 1の時に、snameに”srcAddr”、svalueに”2222”が入る。
 
 
 パラメータの追加
