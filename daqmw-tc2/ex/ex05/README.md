@@ -98,18 +98,15 @@ samplePara.xmlを以下のように編集する。
     (編集後）<execPath>/home/daq/MyDaq/SampleReaderPara/SampleReaderComp</execPath>
 
 　　パラメータの追加
-    (編集前)
-　　<params>
-         <param pid="srcAddr">127.0.0.1</param>
-         <param pid="srcPort">2222</param>
-    </params>
-
-    (編集後)
-　　<params>
-         <param pid="srcAddr">127.0.0.1</param>
-         <param pid="srcPort">2222</param>
-         <param pid="TEST">testtest</param>
-    </params>
+    (編集前)<params>
+                <param pid="srcAddr">127.0.0.1</param>
+                <param pid="srcPort">2222</param>
+            </params>
+    (編集後)<params>
+                <param pid="srcAddr">127.0.0.1</param>
+                <param pid="srcPort">2222</param>
+                <param pid="TEST">testtest</param>
+           </params>
 
 
 編集後、samplePara.xmlからDAQ Middlewareを起動させ、
