@@ -1,5 +1,5 @@
-(テーマ)SampleReader-SampleMonitor間のデータ
-================================
+(テーマ)コンポーネント間のデータについて
+=======================================
 
 この章では、まずSampleReaderおよびSampleMonitorの処理について説明する。
 処理を理解した上で、SampleReader-SampleMonitor間のデータを確認できる
