@@ -132,7 +132,7 @@ SampleReader-SampleMonitorのシステムを起動させた場合、
 SampleMonitorでヒストグラムの大きさを、コンフィグレーションファイルのパラメータから
 変えられるように、プログラムとコンフィグレーションファイルを変更すること。
 
-ない、プログラムとコンフィグレーションファイルの正解はdaqmw-tc2/daqmw/の下
+なお、プログラムとコンフィグレーションファイルの正解はdaqmw-tc2/daqmw/の下
 SampleMonitor2とsample_Canvas.txtとして置かれている。
 
 
