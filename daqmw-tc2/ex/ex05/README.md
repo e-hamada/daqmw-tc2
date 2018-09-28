@@ -89,7 +89,7 @@ for文のi = 1の時に、snameに”srcAddr”、svalueに”2222”が入る�
 以下のコマンドを実行し、sample.xmlをsamplePara.xmlにコピーする。
 
     %  cd ~/MyDaq/
-    %  cp cp sample.xml samplePara.xml
+    %  cp sample.xml samplePara.xml
 
 samplePara.xmlを以下のように編集する。
 
@@ -111,6 +111,36 @@ samplePara.xmlを以下のように編集する。
 
 編集後、samplePara.xmlからDAQ Middlewareを起動させ、
 configureした後にログを見るとtest変数の値がログに記載される。
+
+
+なお、samplePara.xmlとsamplePara.xmlの正解はdaqmw-tc2/daqmw/の下に置かれている
+
+課題
+----
+
+課題1
+
+SampleMonitorはヒストグラムの更新レートのためのパラメータを持っている。
+そのパラメータをコンフィグレーションファイルから任意の値に変更し、
+SampleReader-SampleMonitorのシステムを起動させた場合、
+ヒストグラムのレートが変わっていることを確認すること
+
+
+
+課題2
+SampleMonitorでヒストグラムの大きさを、コンフィグレーションファイルのパラメータから
+変えられるように、プログラムとコンフィグレーションファイルを変更すること。
+
+ない、プログラムとコンフィグレーションファイルの正解はdaqmw-tc2/daqmw/の下
+SampleMonitor2とsample_Canvas.txtとして置かれている。
+
+
+
+
+
+
+
+
 
 
 
