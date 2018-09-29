@@ -28,7 +28,7 @@ DAQMW-TC
 ここにあるファイルをダウンロードするにはターミナルを開いて次のコマンドを実行します。
 
     % cd
-    % git clone https://github.com/e-hamada/daqmw-tc2git
+    % git clone https://github.com/e-hamada/daqmw-tc2.git
 
 パーセント記号(%)はコマンドラインのプロンプトで入力する必要は
 ありません。最初のcdコマンドはホームディレクトリに移動するために
