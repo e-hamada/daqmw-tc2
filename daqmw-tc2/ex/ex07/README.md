@@ -54,11 +54,13 @@ SampleLoggerコンポーネントは /usr/share/daqmw/example/SampleLogger/ デ�
 sedコマンドを使ったスクリプトを用意したのでこれを使う(現在のDAQ-Middlewareにはまだないが今後
 追加する予定になっている)。
 
+    (ホームディレクトリにRawDataディレクトリを作成。作るシステムはこの下にいれる)
+    % mkdir RawData 
     % cd ~/RawData
     % cp -r /usr/share/daqmw/examples/SampleLogger .
     % mv SampleLogger RawDataLogger (ディレクトリ名の書き換え)
     % cd RawDataLogger
-    % cp ~/daqmw-tc/daqmw/utils/change-SampleLogger-name.sh .
+    % cp ~/daqmw-tc2/daqmw-tc2/daqmw/utils/change-SampleLogger-name.sh .
     % chmod +x change-SampleLogger-name.sh
     (change-SampleLogger-name.shのなかみを見てみる)
     (RawDataLoggerではない名前に変更する場合はnew_name_camel_caseを変更する)
@@ -73,15 +75,15 @@ sedコマンドを使ったスクリプトを用意したのでこれを使う(�
 RawDataReaderコンポーネントの作成
 ------------------------------------
 
-Readerはすでにdaqmw/RawDataReader/ディレクトリにあるのでこれをコピーして
-使う。
-
-    % cd
-    % mkdir RawData (ホームディレクトリにRawDataディレクトリを作成。作るシステムはこの下にいれる)
-    % cd RawData
-    % cp -r ~/daqmw-tc/daqmw/RawDataReader .
+同様に、ReaderもSampleReaderも利用する。
+    % cd ~/RawData
+    % cp -r /usr/share/daqmw/examples/SampleReader .
+    % mv SampleReader RawDataReader (ディレクトリ名の書き換え)
     % cd RawDataReader
-    % make
+    % cp ~/daqmw-tc2/daqmw-tc2/daqmw/utils/change-SampleReader-name.sh .
+    % chmod +x change-SampleReader-name.sh
+    % ./change-SampleReader-name.sh
+
 
 [課題]
 
