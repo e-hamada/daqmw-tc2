@@ -5,20 +5,20 @@ DAQ-Middlewareを稼働させる方法にはコンソールモードと
 Webモードがある。コンソールモードで動かす方法はすでに
 試したので、次にWebモードで動かすのを試してみる。
 
-まずrootになり、apacheが起動しているかどうかを確認する。
+まずapacheが起動しているかどうかを確認する。
 
-    root#  systemctl status httpd.service
+    root# service httpd status
 
-Active: active (running)  とでる場合はhttpdは起動しているので
+httpd (pid 12345) is running... とでる場合はhttpdは起動しているので
 OK。
 
-Active: inactive (dead)とでた場合は起動していないので起動する:
+httpd is stoppedとでた場合は起動していないので起動する:
 
-    root# systemctl status httpd.service
+    root# service httpd start
 
 OS起動時に自動起動するようにするためには以下のコマンドを実行する:
 
-    root# systemctl enable httpd.service
+    root# chkconfig httpd on
 
 次にDAQ-Middlewareの起動の説明に移る。
 
