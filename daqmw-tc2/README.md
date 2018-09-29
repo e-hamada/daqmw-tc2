@@ -3,10 +3,8 @@ DAQMW-TC
 
 [DAQ-Middlewareトレーニングコース時間割など](http://daqmw.kek.jp/seminar/2017/)
 
-2017年9月開催のDAQ-Middlewareトレーニングコース実習用ファイルです。
+DAQ-Middlewareトレーニングコース実習用ファイルです。
 トレーニングコース内で実習に入るまえに何をどういう手順で行うのかを説明します。
-
-![実習システムの様子](http://daqmw.kek.jp/seminar/2014/spartan_and_mac-small.png)
 
 受講者のかたがたは以下のものを用意してください。
 
@@ -17,9 +15,9 @@ DAQMW-TC
 
 実習に使うボードは主催者側で用意します。
 
-パソコンにはVirtualBoxをインストールして、仮想Scientific Linux 6.9上で
+パソコンにはVirtualBoxをインストールして、仮想Scientific Linux 6.10上で
 実を行います。
-[セットアップ方法のページ](http://daqmw.kek.jp/seminar/2017/virtualbox/)
+[セットアップ方法のページ](http://daqmw.kek.jp/seminar/2018/virtualbox/)
 を用意してありますのでコース出席前に準備しておいてください。
 
 ファイルの取得
@@ -34,20 +32,15 @@ DAQMW-TC
 ありません。最初のcdコマンドはホームディレクトリに移動するために
 行っています。
 
-ダウンロードするとホームディレクトリにdaqmw-tcというディレクトリができます。
-この文書ではこのディレクトリを ~/daqmw-tcと書きます。
+ダウンロードするとホームディレクトリにdaqmw-tc2/datamw-tc2というディレクトリができます。
+この文書ではこのディレクトリを ~/daqmw-tc2/daqmw-tc2/と書きます。
 その中には以下のディレクトリ(複数)ができます。
 
 [ex](ex/)
 ---------
 
-実習で行う項目の解説、一部のコードなどが入っています。
+実習で行う項目の解説が入っています。
 
-[sandbox](sandbox/)
--------------------
-
-受講者のかたがたは必要ならこのディレクトリにファイルをコピーするなどして
-実習してください。
 
 [doc](doc/)
 -----------
@@ -59,10 +52,6 @@ DAQMW-TC
 
 実習で使うSpartan 3Eにトリガー信号を送るプログラムが入っています。
 
-[bs](bs/)
----------
-
-実習の解答例があります(全てではありません)。
 
 [daqmw](daqmw/)
 ---------------
@@ -71,7 +60,3 @@ DAQMW-TC
 実習途中でにっちもさっちもいかなくなったらこれを見て学習するのも
 DAQ-Middleware習得手段のひとつだと思っていれてあります。
 
-* RawDataReader
-* RawDataMonitor
-* RawDataLogger
-* Dispatcher
