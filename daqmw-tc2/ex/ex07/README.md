@@ -76,6 +76,7 @@ RawDataReaderコンポーネントの作成
 ------------------------------------
 
 同様に、ReaderもSampleReaderも利用する。
+
     % cd ~/RawData
     % cp -r /usr/share/daqmw/examples/SampleReader .
     % mv SampleReader RawDataReader (ディレクトリ名の書き換え)
