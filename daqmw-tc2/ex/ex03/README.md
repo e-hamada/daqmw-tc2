@@ -14,7 +14,7 @@
 すると、SampleReaderのログが表示される。tailコマンドに-fオプションを追加させているので、ログが
 更新されるとその分の表示も行われる。
 
-別のターミナルを開いて、ex11で行ったようにSampleReaderComp、SampleMonitorCompおよびこれらを
+別のターミナルを開いて、ex01で行ったようにSampleReaderComp、SampleMonitorCompおよびこれらを
 統括するDaqOperatorを起動する。
 
     % cd ~/MyDaq
