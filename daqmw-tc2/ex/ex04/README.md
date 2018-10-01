@@ -20,9 +20,6 @@ SampleLoggerコンポーネントの作成
     % cd SampleLogger
     % make
     (SampleLoggerCompというファイル名の実行形式ファイルができる)
-    % cd ../SampleLogger
-    % make
-    (SampleLoggerCompというファイル名の実行形式ファイルができる)
     % cd ..
 
 コンフィギュレーションファイルの編集
