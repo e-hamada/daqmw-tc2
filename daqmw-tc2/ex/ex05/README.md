@@ -77,8 +77,8 @@ for文のi = 1の時に、snameに”srcAddr”、svalueに”2222”が入る�
 
     if ( sname == "TEST" ) {
         test = svalue;
+        std::cerr << "test = " << test << std::endl;
     }
-    std::cerr << "test = " << test << std::endl;
 
 
 追加した処理では、受け取ったパラメータのpidがTESTのとき、test変数にそのpidに
