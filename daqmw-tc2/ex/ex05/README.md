@@ -135,7 +135,7 @@ SampleMonitorでヒストグラムの大きさを、コンフィグレーショ�
 
 
 なお、プログラムとコンフィグレーションファイルの正解はdaqmw-tc2/daqmw/の下
-SampleMonitorSizeとsample_Canvas.txtとして置かれている。
+SampleMonitorSizeとsample_Canvas.xmlとして置かれている。
 
 
 
