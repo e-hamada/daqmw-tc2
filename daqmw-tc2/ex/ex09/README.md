@@ -52,7 +52,7 @@ SampleReaderをコピーし、名前を変える
 
 change-SampleReader-name.shの中を修正
 
-修正前）　new_name_camel_case=RawDataReader
+修正前）　new_name_camel_case=SampleReader
 
 修正後）　new_name_camel_case=SampleReader2
 
@@ -64,7 +64,7 @@ change-SampleReader-name.shの中を修正
 
 change-SampleReader-name.shの中を修正
 
-修正前）　new_name_camel_case=RawDataReader
+修正前）　new_name_camel_case=SampleReader
 
 修正後）　new_name_camel_case=SampleReader3
 
