@@ -34,7 +34,7 @@ SampleMonitorコンポーネントはDAQ-Middlewareをセットすると
 
 前回同様コンポーネント名をRawDataMonitorに変更する作業を行う。
 
-    % cp ~/daqmw-tc2/daqmw-pc2/daqmw/utils/change-SampleMonitor-name.sh .
+    % cp ~/daqmw-tc2/daqmw-tc2/daqmw/utils/change-SampleMonitor-name.sh .
     % sh change-SampleMonitor-name.sh
     % cd ..
     % mv SampleMonitor RawDataMonitor
