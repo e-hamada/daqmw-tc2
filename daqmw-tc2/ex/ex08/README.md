@@ -62,6 +62,12 @@ RawDataMonitorコンポーネントの作成
 
 ### RawDataMonitor.hでの変更点
 
+ヘッダファイルはdaqmw-tc2/daqmw-tc2/daqmw/RawDataMonitorの下にあるヘッダファイルを利用すること。
+
+    % cd  /home/daq/RawData/RawDataMonitor/
+    % cp  ~/daqmw-tc2/daqmw-tc2/daqmw/RawDataMonitor/RawDataMonitor.h  .
+
+
 - SampleMonitorではヒストグラムを書いていたのでTH1.hをインクルードし、
   TH1F *m_histとしてヒストグラムへのポインタを宣言していたが、RawDataMonitorでは書くものはグラフなのでTGraph.hをインクルードし、変数名、型もそれにあわせて変更する必要がある。
 
@@ -78,11 +84,46 @@ parse_params()を変更する。
 
 #### daq_start()
 
+    daq_start関数は以下のように変更すること。
+
+
+    int RawDataMonitor::daq_start()
+    {
+        std::cerr << "*** RawDataMonitor::start" << std::endl;
+    
+        m_in_status  = BUF_SUCCESS;
+    
+        //////////////// CANVAS FOR HISTOS ///////////////////
+        if (m_canvas) {
+            delete m_canvas;
+            m_canvas = 0;
+        }
+        m_canvas = new TCanvas("c1", "histos", 0, 0, 600, 400);
+    
+        int col, row;
+        row = N_ROW_IN_CANVAS;
+        col = N_GRAPH / row; 
+        if (N_GRAPH % row != 0) {
+            col ++;
+        }
+        m_canvas->Divide(col, row);
+    
+        for (int i = 0; i < N_GRAPH; i++) {
+            if (m_graph[i]) {
+                delete m_graph[i];
+                m_graph[i] = 0;
+            }
+            m_graph[i] = new TGraph();
+        }
+    
+        return 0;
+    }
+
+
+
 SampleMonitorではヒストグラムデータ(m_hist)を使っているが、今回は
 グラフで変数名も変えているはずなのでそれにあわせて変更する必要がある。
 
-ここで行う処理はグラフデータがあれば、それをdeleteし、あらたにTGraph()
-オブジェクトを作成することである。
 
 #### daq_run()
 
