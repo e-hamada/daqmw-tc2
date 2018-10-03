@@ -77,6 +77,41 @@ RawDataMonitorコンポーネントの作成
 (daq_run())について状態遷移の順番にコードを修正していくのがよいかと
 思う。
 
+
+#### RawDataMonitor
+
+
+コンストラクタの変更
+
+
+    RawDataMonitor::RawDataMonitor(RTC::Manager* manager)
+        : DAQMW::DaqComponentBase(manager),
+          m_InPort("rawdatamonitor_in",   m_in_data),
+          m_in_status(BUF_SUCCESS),
+          m_monitor_update_rate(30),
+          m_event_byte_size(0),
+          m_canvas(0),
+          m_debug(false)
+    {
+        // Registration: InPort/OutPort/Service
+    
+        // Set InPort buffers
+        registerInPort ("rawdatamonitor_in",  m_InPort);
+    
+        init_command_port();
+        init_state_table();
+        set_comp_name("RAWDATAMONITOR");
+    
+        for (int i = 0; i < N_GRAPH; i++) {
+            m_graph[i] = 0;
+        }
+    }
+
+SampleMonitorでは、m_histなどの値を初期化していた。
+グラフ化する場合は、それらの値は必要ないので、省く。
+また、配列はコンストラクタ初期化子できないので、関数のなかで初期化を行う。
+
+
 #### daq_configure()
 
 特に変更はない。パラメータを増やしたときにはdaq_configure()から呼ばれている
