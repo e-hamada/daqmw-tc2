@@ -84,7 +84,7 @@ parse_params()を変更する。
 
 #### daq_start()
 
-    daq_start関数は以下のように変更すること。
+daq_start関数は以下のように変更すること。
 
 
     int RawDataMonitor::daq_start()
