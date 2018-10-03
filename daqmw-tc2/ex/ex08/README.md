@@ -288,11 +288,10 @@ trigger GUIのstopボタンを押しトリガーを送るのを停止する。
     % cd Dispatcher
     % make
 
-4個のDAQコンポーネントを使う場合のコンフィギュレーションファイルを編集する
+4個のDAQコンポーネントを使う場合のコンフィギュレーションファイルを利用する。
 
     % cd ~/RawData
-    % cp ~/daqmw-tc/daqmw/4comps.xml .
-    % 4compis.xmlを編集
+    % cp ~/daqmw-tc2/daqmw-tc2/daqmw/4comps.xml .
 
 
 4compsからDAQ-Middlwareを起動させ、モニターしながらデータも保存していることを確認する。
