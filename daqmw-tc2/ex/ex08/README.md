@@ -246,9 +246,9 @@ deleteする(daq_start()でnewしていたのでdeleteしないと多数回start
 コンフィギュレーションファイルを作る。
 
     % cd ~/RawData
-    % cp ~/daqmw-tc/daqmw/sample.xml read-monitor.xml
-    % reader-monitor.xmlを編集
+    % cp ~/daqmw-tc2/daqmw-tc2/daqmw/reader-monitor.xml read-monitor.xml
 
+これをそのまま使う
 
 システム起動、ラン
 ---------------------
