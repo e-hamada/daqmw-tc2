@@ -175,6 +175,40 @@ SampleMonitorではヒストグラムデータ(m_hist)を使っているが、�
 fill_data()関数を使う。
 SampleMonitorではfill_data()関数内でSampleMonitor::decode_data()関数
 を使ってデコードを行っている。
+
+fill関数
+
+    int RawDataMonitor::fill_data(const unsigned char* mydata, const int size)
+    {
+        rdp.set_buf(mydata, size);
+        int window_size   = rdp.get_window_size();
+        int n_ch          = rdp.get_num_of_ch();
+        int trigger_count = rdp.get_trigger_count();
+    
+        unsigned short data[n_ch][window_size];
+    
+        for (int w = 0; w < window_size; w++) {
+            for (int ch = 0; ch < n_ch; ch ++) {
+                data[ch][w] = rdp.get_data_at(ch, w);
+            }
+        }
+    
+        for (int i = 0; i < N_GRAPH; i++) {
+            for (int w = 0; w < window_size; w++) {
+                m_graph[i]->SetPoint(w, w, data[i][w]);
+            }
+            m_graph[i]->SetMinimum(0.0);
+            m_graph[i]->SetMaximum(5000.0);
+            m_graph[i]->SetTitle(Form("CH: %d Trigger: %d", i, trigger_count));
+        }
+    
+        rdp.reset_buf();
+    
+        return 0;
+    }
+    
+
+
 今回実習で作成するRawDataMonitorではすでに実装ずみの
 デコードルーチンを使うのでdecode_data()関数は必要ではない(消すときは
 RawDataMonitor.cppでの実装部だけではなくRawDataMonitor.hの
