@@ -1,8 +1,6 @@
 DAQMW-TC
 ========
 
-[DAQ-Middlewareトレーニングコース時間割など](http://daqmw.kek.jp/seminar/2017/)
-
 DAQ-Middlewareトレーニングコース実習用ファイルです。
 トレーニングコース内で実習に入るまえに何をどういう手順で行うのかを説明します。
 
@@ -15,10 +13,8 @@ DAQ-Middlewareトレーニングコース実習用ファイルです。
 
 実習に使うボードは主催者側で用意します。
 
-パソコンにはVirtualBoxをインストールして、仮想Scientific Linux 6.10上で
-実を行います。
-[セットアップ方法のページ](http://daqmw.kek.jp/seminar/2018/virtualbox/)
-を用意してありますのでコース出席前に準備しておいてください。
+パソコンにはVirtualBoxをインストールして、仮想Scientific Linux上で
+実習を行います。
 
 ファイルの取得
 --------------
