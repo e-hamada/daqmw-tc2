@@ -17,7 +17,7 @@ Webモードがある。コンソールモードで動かす方法はすでに
     Active: active (running) since 水 2019-09-18 16:40:33 JST; 3s ago
 
 
-もし、Active: inactive (dead) とでた場合は起動していないので起動する:
+もし、Active: inactive (dead) とでた場合は起動されていない。httpdを起動させるために以下のコマンドを実行する:
 
     root# systemctl start  httpd
 
