@@ -91,7 +91,7 @@ sample.xmlをsample_Data.xmlにコピーする。
 
 
 
-シーケンス番号が20で割り切れる時、SampleMonitorが送るデータをログに記載されるようにすること。
+シーケンス番号が20で割り切れる時、SampleMonitorが受け取るデータをログに記載されるようにすること。
 
 
 手順１
@@ -106,7 +106,7 @@ SampleMonitorのディレクトリをSampleSampleDataにコピーする。
 手順2
 
 SampleMonitorDataのSampleMonitor.cppを編集する。
-シーケンス番号が20で割り切れる時、SampleMonitorが送るデータをログに記載される処理を追加すること。
+シーケンス番号が20で割り切れる時、SampleMonitorが受け取るデータをログに記載される処理を追加すること。
 
 手順3
 
