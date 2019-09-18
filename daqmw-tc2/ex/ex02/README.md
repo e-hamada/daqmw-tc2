@@ -5,22 +5,28 @@ DAQ-Middlewareを稼働させる方法にはコンソールモードと
 Webモードがある。コンソールモードで動かす方法はすでに
 試したので、次にWebモードで動かすのを試してみる。
 
-まずapacheが起動しているかどうかを確認する。
+まずrootになり、apacheが起動しているかどうかを確認する。
 
-    root# service httpd status
+    root# systemctl status httpd
 
-httpd (pid 12345) is running... とでる場合はhttpdは起動しているので
-OK。
+    [root@localhost MyDaq]# systemctl status httpd
+    ● httpd.service - The Apache HTTP Server
+    Loaded: loaded (/usr/lib/systemd/system/httpd.service; enabled; vendor preset: disabled)
+    Active: active (running) since 水 2019-09-18 16:40:33 JST; 3s ago
 
-httpd is stoppedとでた場合は起動していないので起動する:
+等とでる場合はhttpdは起動しているのでOK。
 
-    root# service httpd start
+Active: inactive (dead) とでた場合は起動していないので起動する:
+
+    root# systemctl start  httpd
+
 
 OS起動時に自動起動するようにするためには以下のコマンドを実行する:
 
-    root# chkconfig httpd on
+    root# systemctl enable httpd.service
 
-次にDAQ-Middlewareの起動の説明に移る。
+
+次に一般ユーザーに戻り、DAQ-Middlewareの起動の説明に移る。
 
 Webモードで起動するにはrun.pyを-cなしで起動する。
 
