@@ -10,6 +10,7 @@ Webモードがある。コンソールモードで動かす方法はすでに
     root# systemctl status httpd
 
 実行後、以下のように表示されていれば、httpdは起動している。
+ 
     [root@localhost MyDaq]# systemctl status httpd
     ● httpd.service - The Apache HTTP Server
     Loaded: loaded (/usr/lib/systemd/system/httpd.service; enabled; vendor preset: disabled)
