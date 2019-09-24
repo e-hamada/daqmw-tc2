@@ -86,7 +86,9 @@ RawDataReaderコンポーネントの作成
     % ./change-SampleReader-name.sh
 
 
-[課題]
+課題
+----
+
 
 このRawDataReaderをボードからデータを受信できるように編集すること。
 SampleReaderの場合、read_data_from_detectors関数でreadAll関数で1024BYTEだけ読み込むようにしていた。
