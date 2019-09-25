@@ -188,13 +188,13 @@ SampleMonitorではfill_data()関数内でSampleMonitor::decode_data()関数
     // mydataは1イベント分のデータが入っているバッファ、
     // sizeは1ベント分のデータのサイズとなっている。
     // 
-    // ここでは、mydataに含まれるヘッダからwindowの数とch数を取得する
-    // 次にmydataに含まれるデータ部からwindow、chごとのデータをdata[][]に代入すること
-    // data[][]が以下の処理で利用されていく
+    // ここでは、mydataに含まれるヘッダからwindowの数とch数を取得する。
+    // 次にmydataに含まれるデータ部からwindow、chごとのデータをdata[][]に代入すること。
+    // data[][]が以下の処理で利用されていく。
     //
     // ・ヒント
-    // 昨日の課題の[ex06]で書いたクラスやその中の関数を使うと簡単に作ることができる
-    // （昨日の課題の[ex06]で書いたクラスを使わなくても良いです）
+    // 昨日の課題の[ex06]で書いたクラスやその中の関数を使うと簡単に作ることができる。
+    // （昨日の課題の[ex06]で書いたクラスを使わなくても良い。）
     ////////////////////////////////////////////
 
         for (int i = 0; i < N_GRAPH; i++) {
@@ -215,11 +215,10 @@ SampleMonitorではfill_data()関数内でSampleMonitor::decode_data()関数
     }
     
 
-
-今回実習で作成するRawDataMonitorではすでに実装ずみの
-デコードルーチンを使うのでdecode_data()関数は必要ではない(消すときは
-RawDataMonitor.cppでの実装部だけではなくRawDataMonitor.hの
-decode_data()関数を宣言しているところも消す必要がある)。
+SampleMonitorではdecode_data()関数でエミュレータのデータをデコードしていた。
+今回、この関数は必要ではないため、消しておくこと。
+消すときはRawDataMonitor.cppでの実装部だけではなくRawDataMonitor.hの
+decode_data()関数を宣言しているところも消す必要がある。
 
 ときどきグラフを書くというのは以下の部分である:
 
