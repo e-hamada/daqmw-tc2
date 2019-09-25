@@ -271,7 +271,7 @@ deleteする(daq_start()でnewしていたのでdeleteしないと多数回start
 システム起動、ラン
 ---------------------
 
-    % run.py -cl reader-monitor.xml
+    % run.py -cl (コンフィグレーションファイル)
 
 でシステムを起動し、0, 1とキーを押してシステムを動かす。
 
