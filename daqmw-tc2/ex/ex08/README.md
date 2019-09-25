@@ -177,7 +177,8 @@ fill_data()関数を使う。
 SampleMonitorではfill_data()関数内でSampleMonitor::decode_data()関数
 を使ってデコードを行ってきた。今回は、データをデコードし、そのデータをグラフに記載する処理を行う。
 
-具体的に、fill_data関数は以下のようになる。
+具体的にfill_data関数は以下のようになる。ただし、以下のfill_data関数には全ては書かれていない。
+抜けている部分は自身で埋めていくこと。
 
     int RawDataMonitor::fill_data(const unsigned char* mydata, const int size)
     {
