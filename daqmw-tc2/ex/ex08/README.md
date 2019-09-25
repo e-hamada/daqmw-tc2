@@ -168,15 +168,16 @@ SampleMonitorではヒストグラムデータ(m_hist)を使っているが、�
 
 という処理をおこなう。
 
-上流コンポーネントから送られてくるデータを読むところは変更する必要は
-ない。
+上流コンポーネント（RawDataReader)から送られてくるデータを読むところは変更する必要は
+ない。なお、上流コンポーネント（RawDataReader)から送られてくるデータは1イベント分のデータとなっているので、
+このことに合わせてデータ処理を行っていく。
 
 デコードしてグラフデータをセットする部分はdaq_run()から呼ばれている
 fill_data()関数を使う。
 SampleMonitorではfill_data()関数内でSampleMonitor::decode_data()関数
-を使ってデコードを行っている。
+を使ってデコードを行ってきた。今回は、データをデコードし、そのデータをグラフに記載する処理を行う。
 
-fill関数
+具体的に、fill_data関数は以下のようになる。
 
     int RawDataMonitor::fill_data(const unsigned char* mydata, const int size)
     {
