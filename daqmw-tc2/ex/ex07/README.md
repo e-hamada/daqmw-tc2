@@ -106,11 +106,14 @@ DAQし続けるようにすること。
 コンフィギュレーションファイルの作成
 ---------------------------------------
 
-コンフィギュレーションファイルを作る。
+コンフィギュレーションファイルを作る。ex04でReaderとLoggerを使用するコンフィグレーションファイルを作成していたので、それを利用する。
 
     % cd ~/RawData
-    % cp /usr/share/daqmw/conf/sample.xml reader-logger.xml
-    % reader-logger.xmlを今回作成したRawDataReaderとRawDataLoggerの環境にあわせて編集
+    % cp ~/MyDaq/reader-logger.xml .
+    
+reader-logger.xmlを今回作成したRawDataReaderとRawDataLoggerの環境にあわせて編集すること(パスの設定など）。また、ボードのアドレスは"192.168.10.16"、
+ポート番号は"24"なので、これらの値に対応させること。
+    
 
 システム起動、ラン
 ---------------------
