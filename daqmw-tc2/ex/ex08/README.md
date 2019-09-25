@@ -181,19 +181,21 @@ SampleMonitorではfill_data()関数内でSampleMonitor::decode_data()関数
 
     int RawDataMonitor::fill_data(const unsigned char* mydata, const int size)
     {
-        rdp.set_buf(mydata, size);
-        int window_size   = rdp.get_window_size();
-        int n_ch          = rdp.get_num_of_ch();
-        int trigger_count = rdp.get_trigger_count();
-    
-        unsigned short data[n_ch][window_size];
-    
-        for (int w = 0; w < window_size; w++) {
-            for (int ch = 0; ch < n_ch; ch ++) {
-                data[ch][w] = rdp.get_data_at(ch, w);
-            }
-        }
-    
+
+    /////////////////////////////////////////////
+    // ・ここでの処理
+    // mydataは1イベント分のデータが入っているバッファ、
+    // sizeは1ベント分のデータのサイズとなっている。
+    // 
+    // ここでは、mydataに含まれるヘッダからwindowの数とch数を取得する
+    // 次にmydataに含まれるデータ部からwindow、chごとのデータをdata[][]に代入すること
+    // data[][]が以下の処理で利用されていく
+    //
+    // ・ヒント
+    // 昨日の課題の[ex06]で書いたクラスやその中の関数を使うと簡単に作ることができる
+    // （昨日の課題の[ex06]で書いたクラスを使わなくても良いです）
+    ////////////////////////////////////////////
+
         for (int i = 0; i < N_GRAPH; i++) {
             for (int w = 0; w < window_size; w++) {
                 m_graph[i]->SetPoint(w, w, data[i][w]);
@@ -203,8 +205,11 @@ SampleMonitorではfill_data()関数内でSampleMonitor::decode_data()関数
             m_graph[i]->SetTitle(Form("CH: %d Trigger: %d", i, trigger_count));
         }
     
-        rdp.reset_buf();
-    
+   
+    //////////////////////////////////
+    //必要ならここにも処理を書くこと
+    //
+    /////////////////////////////////
         return 0;
     }
     
