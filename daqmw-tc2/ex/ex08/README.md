@@ -230,6 +230,22 @@ decode_data()関数を宣言しているところも消す必要がある)。
         m_canvas->Update();
     }
 
+この部分を以下のようにする。
+
+    if (m_monitor_update_rate == 0) {
+        m_monitor_update_rate = 1000;
+    }
+
+    unsigned long sequence_num = get_sequence_num();
+    if ((sequence_num % m_monitor_update_rate) == 0) {
+        for (int i = 0; i < N_GRAPH; i++) {
+            m_canvas->cd(i + 1);
+            m_graph[i]->Draw("AC*");
+        }
+        m_canvas->Update();
+    }
+
+
 #### daq_stop()
 
 daq_stop()に以降した直前に読んだデータを使って画面に図を出す処理を書く。
