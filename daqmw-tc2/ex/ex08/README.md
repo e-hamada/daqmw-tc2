@@ -46,14 +46,15 @@ SampleMonitorコンポーネントはDAQ-Middlewareをセットすると
 このままではロジックはSampleMonitorのままなのでRawDataフォーマット
 にあわせる、描画するものを変更するなどの作業が必要になる。
 
-デコードルーチンは昨日の課題の[ex06]で書いたものを使うので
-RawDataPacket.hおよびRawDataPacket.cppをコピーし、さらに
+デコードルーチンのプログラムは昨日の課題の[ex06]で作成した。
+このプログラムを使う場合、RawDataPacket.hおよびRawDataPacket.cppをコピーし、さらに
 Makefileで
 
     SRCS += RawDataPacket.cpp
 
-の行を追加する。これでコードを書く準備ができた。あとはロジックを
-書き直せばよい。
+の行を追加する。
+
+これでコードを書く準備ができた。あとはロジックを書き直せばよい。
 
 RawDataMonitorコンポーネントの作成
 ------------------------------------
