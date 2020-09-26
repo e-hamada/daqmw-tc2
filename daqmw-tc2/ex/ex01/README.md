@@ -3,7 +3,7 @@
 
 DAQ-Middlewareでのデータ収集システムが動作をつかむために付属のサンプルコンポーネントを動かしてみる。
 
-以下のような簡単なシステムを試してみる
+以下のような簡単なシステムを試してみる1。
 
 emulator - SampleReader - SampleMonitor
 
