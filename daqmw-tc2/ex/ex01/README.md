@@ -50,7 +50,6 @@ SampleReaderComp、SampleMonitorCompおよびこれらを統括するDaqOperator
 run.pyはコンフィギュレーションファイルを解析し、execPathタグで指定してある
 ファイルを起動し、/usr/libexec/daqmw/DaqOperator/DaqOperatorCompを起動する。
 
-(註)
 
 DaqOperatorCompは通常書き換える必要がないのですでにコンパイル済みのものが入っている。
 
