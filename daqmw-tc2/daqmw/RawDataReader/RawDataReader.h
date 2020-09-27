@@ -56,6 +56,7 @@ private:
 
     static const int MAX_BUFFER_SIZE  = 1024*1024;
     static const int HEADER_SIZE      = 12;
+    static const int FOOTER_SIZE      = 4;
     unsigned char m_data[MAX_BUFFER_SIZE];
     unsigned int  m_recv_byte_size;
 

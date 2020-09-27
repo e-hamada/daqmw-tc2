@@ -232,7 +232,21 @@ int RawDataReader::read_data_from_detectors()
         fatal_error_report(USER_DEFINED_ERROR2, "SOCKET TIMEOUT (DATA PART)");
     }
 
-    return data_length + HEADER_SIZE;
+    // Finally, Read footer
+    status = m_sock->readAll(&m_data[HEADER_SIZE + data_length], FOOTER_SIZE);
+    if (status == DAQMW::Sock::ERROR_FATAL) {
+        std::cerr << "### ERROR: m_sock->readAll" << std::endl;
+        fatal_error_report(USER_DEFINED_ERROR1, "SOCKET FATAL ERROR");
+    }
+    else if (status == DAQMW::Sock::ERROR_TIMEOUT) {
+        // Header read timeout is not an error
+        fprintfwt(stderr, "Header Read Timeout\n");
+        return DAQMW::Sock::ERROR_TIMEOUT;
+    }    
+
+
+
+    return data_length + HEADER_SIZE + FOOTER_SIZE;
 }
 
 int RawDataReader::set_data(unsigned int data_byte_size)
