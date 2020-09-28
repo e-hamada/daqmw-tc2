@@ -121,8 +121,9 @@ DAQし続けるようにすること。
     % cd ~/RawData
     % cp ~/MyDaq/reader-logger.xml .
     
-reader-logger.xmlを今回作成したRawDataReaderとRawDataLoggerの環境にあわせて編集すること(パスの設定など）。また、ボードのアドレスは"192.168.10.16"、
-ポート番号は"24"なので、これらの値に対応させること。
+reader-logger.xmlを今回作成したRawDataReaderとRawDataLoggerの環境にあわせて編集すること(パスの設定など）。
+また、ボードのアドレスはに対応させること。
+（デフォルトでは"127.0.0.1"、ポート番号は"1234")
     
 
 ソフトウェアシミュレータ
