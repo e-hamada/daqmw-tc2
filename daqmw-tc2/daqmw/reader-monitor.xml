@@ -26,8 +26,8 @@
                         <outPort>rawdatareader_out</outPort>
                     </outPorts>
                     <params>
-                        <param pid="srcAddr">192.168.10.16</param>
-                        <param pid="srcPort">24</param>
+                        <param pid="srcAddr">127.0.0.1</param>
+                        <param pid="srcPort">1234</param>
                     </params>
                 </component>
                 <component cid="RawDataMonitor0">
@@ -43,7 +43,7 @@
                     <outPorts>
                     </outPorts>
                     <params>
-                        <param pid="monitorUpdateRate">10</param>
+                        <param pid="monitorUpdateRate">5</param>
                     </params>
                 </component>
             </components>
