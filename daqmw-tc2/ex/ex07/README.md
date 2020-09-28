@@ -123,6 +123,19 @@ reader-logger.xmlを今回作成したRawDataReaderとRawDataLoggerの環境に�
 ポート番号は"24"なので、これらの値に対応させること。
     
 
+ソフトウェアシミュレータ
+--------------------
+シミュレータは以下のコマンドで起動できる。
+
+    % daqmw-tc-server
+
+IPアドレスは127.0.0.1でポート番号は1234になる。
+
+このシミュレータのオプションについては以下のURLを参照すること。
+
+https://github.com/h-sendai/daqmw-tc-network-2/tree/master/emulator
+
+
 システム起動、ラン
 ---------------------
 
@@ -130,19 +143,6 @@ reader-logger.xmlを今回作成したRawDataReaderとRawDataLoggerの環境に�
 
 でシステムを起動し、0, 1とキーを押してシステムを動かす。
 
-trigger.pyでボードにトリガーを送る
--------------------------------------
-
-    % ~/daqmw-tc/trigger/trigger.py
-
-としてstartボタンを押しトリガーを送る。読みだしシステムのイベントバイト数が
-増えるのを確認する。
-
-trigger停止、システム停止
---------------
-
-trigger GUIのstopボタンを押しトリガーを送るのを停止する。
-2を押してシステムを止める。
 
 
 データがセーブされていることを確認
