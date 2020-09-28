@@ -70,8 +70,8 @@ private:
     ////////// ROOT Graph //////////
     TCanvas *m_canvas;
     RawDataPacket rdp;
-    const static int N_GRAPH = 8;
-    const static int N_ROW_IN_CANVAS = 3;
+    const static int N_GRAPH = 4;
+    const static int N_ROW_IN_CANVAS = 2;
     TGraph   *m_graph[N_GRAPH];
     bool m_debug;
 };

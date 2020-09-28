@@ -18,11 +18,29 @@ int RawDataPacket::set_buf(const unsigned char *buf, const int buf_len)
     return 0;
 }
 
-bool RawDataPacket::is_raw_data_packet()
+bool RawDataPacket::is_valid_magic()
 {
-    unsigned char format = m_buf[FORMAT_POS];
-    format = (format & 0xf0);
-    if (format == 0xf0) {
+    unsigned int *int_p;
+    unsigned int magic;
+
+    int_p = (unsigned int *) &m_buf[MAGIC_POS];
+    magic = ntohl(*int_p);
+    if (magic == 0x01234567) {
+        return true;
+    }
+    else {
+        return false;
+    }
+}
+
+bool RawDataPacket::is_valid_footer()
+{
+    unsigned int *int_p;
+    unsigned int footer;
+
+    int_p = (unsigned int *) &m_buf[FOOTER_POS];
+    footer = ntohl(*int_p);
+    if (footer == 0x89abcdef) {
         return true;
     }
     else {
@@ -32,10 +50,7 @@ bool RawDataPacket::is_raw_data_packet()
 
 int RawDataPacket::get_word_size()
 {
-    unsigned char word_size = m_buf[FORMAT_POS];
-    word_size = (word_size & 0x0f);
-
-    return word_size;
+    return 2;
 }
 
 int RawDataPacket::get_data_length()
@@ -60,14 +75,11 @@ int RawDataPacket::get_trigger_count()
 
 int RawDataPacket::get_num_of_ch()
 {
-    unsigned char n_ch;
-    n_ch = m_buf[N_CH_POS];
-    return n_ch;
+    return 4;
 }
 
 unsigned int RawDataPacket::get_data_at(int ch, int window)
 {
-    // XXX: Assume the word size is 16 bit
     unsigned short *data;
 
     int word_size = get_word_size();
@@ -82,8 +94,8 @@ unsigned int RawDataPacket::get_data_at(int ch, int window)
 
 int RawDataPacket::get_window_size()
 {
-    int word_size = get_word_size();
-    int n_ch      = get_num_of_ch();
+    int word_size = 2;
+    int n_ch      = 4;
     int data_length = get_data_length();
 
     int window_size = data_length / (word_size*n_ch);
