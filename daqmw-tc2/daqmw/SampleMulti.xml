@@ -13,17 +13,17 @@
     <daqGroups>
         <daqGroup gid="group0">
             <components>
-                <component cid="SampleReader10">
+                <component cid="SampleReader0">
                     <hostAddr>127.0.0.1</hostAddr>
                     <hostPort>50000</hostPort>
-                    <instName>SampleReader10.rtc</instName>
-                    <execPath>/home/daq/MyDaq/SampleReader1/SampleReader1Comp</execPath>
+                    <instName>SampleReader0.rtc</instName>
+                    <execPath>/home/daq/MyDaq/SampleReader/SampleReaderComp</execPath>
                     <confFile>/tmp/daqmw/rtc.conf</confFile>
                     <startOrd>5</startOrd>
                     <inPorts>
                     </inPorts>
                     <outPorts>
-                        <outPort>samplereader_out1</outPort>
+                        <outPort>samplereader_out</outPort>
                     </outPorts>
                     <params>
                         <param pid="srcAddr">127.0.0.1</param>
@@ -72,7 +72,7 @@
                     <confFile>/tmp/daqmw/rtc.conf</confFile>
                     <startOrd>2</startOrd>
                     <inPorts>
-                        <inPort from="SampleReader10:samplereader_out1" >collector_in0</inPort>
+                        <inPort from="SampleReader0:samplereader_out" >collector_in0</inPort>
                         <inPort from="SampleReader20:samplereader_out2">collector_in1</inPort>
                         <inPort from="SampleReader30:samplereader_out3">collector_in2</inPort>
                     </inPorts>
