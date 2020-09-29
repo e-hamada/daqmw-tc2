@@ -77,8 +77,7 @@ Mergerの取得
 --------------------------------
 
     % cd ~/MyDaq/
-    % wget http://research.kek.jp/people/ehamada/Merger.tar
-    % tar xvf Merger.tar 
+    % cp -r ~/daqmw-tc2/daqmw-tc2/daqmw/Merger/ .
     % cd Merger
 
 Merger.hを少しだけ修正する
