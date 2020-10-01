@@ -260,13 +260,57 @@ decode_data()関数を宣言しているところも消す必要がある。
 
 #### daq_stop()
 
-daq_stop()に以降した直前に読んだデータを使って画面に図を出す処理を書く。
+SampleMonitorではヒストグラムのための処理が記載されていたが、その部分を削除する。
+
+
+さらに、daq_stop()に以降した直前に読んだデータを使って画面に図を出す処理を書く。
+具体的には以下のように書く
+
+    int RawDataMonitor::daq_stop()
+    {
+        std::cerr << "*** RawDataMonitor::stop" << std::endl;
+    
+        for (int i = 0; i < N_GRAPH; i++) {
+            m_graph[i]->Draw();
+        }
+        m_canvas->Update();
+    
+        reset_InPort();
+    
+        return 0;
+    }
+
+
+
 
 #### daq_unconfigure()
 
 SampleReaderではヒストグラムデータ、RawDataMonitorではグラフデータを
 deleteする(daq_start()でnewしていたのでdeleteしないと多数回start/stopを
 繰り返したときにメモリーを浪費する)。
+
+
+具体的には以下のように書く
+
+    int RawDataMonitor::daq_unconfigure()
+    {
+        std::cerr << "*** RawDataMonitor::unconfigure" << std::endl;
+        if (m_canvas) {
+            delete m_canvas;
+            m_canvas = 0;
+        }
+    
+        for (int i = 0; i < N_GRAPH; i++) {
+            if (m_graph[i]) {
+                delete m_graph[i];
+                m_graph[i] = 0;
+            }
+        }
+    
+        return 0;
+    }
+
+
 
 コンフィギュレーションファイルの作成
 ---------------------------------------
