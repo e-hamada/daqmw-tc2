@@ -240,7 +240,7 @@ int RawDataReader::read_data_from_detectors()
     }
     else if (status == DAQMW::Sock::ERROR_TIMEOUT) {
         // Header read timeout is not an error
-        fprintfwt(stderr, "Header Read Timeout\n");
+        fprintfwt(stderr, "Footer Read Timeout\n");
         return DAQMW::Sock::ERROR_TIMEOUT;
     }    
 
