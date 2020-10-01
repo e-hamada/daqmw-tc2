@@ -144,6 +144,7 @@ SampleMonitorを修正し、別々のヒストグラムに表示させるよう�
 Monitorはそのreserved領域に格納されたポート番号を見て、どのヒストグラムにfillすべきか
 を判断させる。
 
+答えとなるコンポーネントプラグラムとコンフィグレーションファイルはdaqmw/の下のSampleReader1, SampleReader2, SampleReader3, Merger, SampleMonitorMulti, SampleMulti.xmlである。
 
 
 
