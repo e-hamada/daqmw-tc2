@@ -192,6 +192,7 @@ int RawDataReader::daq_resume()
     return 0;
 }
 
+
 int RawDataReader::get_data_length(unsigned char *buf, int buflen)
 {
     unsigned int *length;
@@ -202,25 +203,32 @@ int RawDataReader::get_data_length(unsigned char *buf, int buflen)
     return rv;
 }
 
+
+
 int RawDataReader::read_data_from_detectors()
 {
-    int status;
-    int data_length = 0;
+    int received_data_size = 0;
 
-    // First Read header only
-    status = m_sock->readAll(&m_data[0], HEADER_SIZE);
+    /// write your logic here
+    /// read 1024 byte data from data server
+    int status = m_sock->readAll(&m_data[0], HEADER_SIZE);
     if (status == DAQMW::Sock::ERROR_FATAL) {
         std::cerr << "### ERROR: m_sock->readAll" << std::endl;
         fatal_error_report(USER_DEFINED_ERROR1, "SOCKET FATAL ERROR");
     }
     else if (status == DAQMW::Sock::ERROR_TIMEOUT) {
-        // Header read timeout is not an error
-        fprintfwt(stderr, "Header Read Timeout\n");
+        std::cerr << "### Timeout: Header Read Timeout" << std::endl;
         return DAQMW::Sock::ERROR_TIMEOUT;
+
     }
+
+    int data_length = 0;
+
+    std::cerr << "### ERROR: TEST" << std::endl;
+
     // get data part length
     data_length = get_data_length(&m_data[0], HEADER_SIZE);
-
+    
     // Then read data part (data_length bytes)
     status = m_sock->readAll(&m_data[HEADER_SIZE], data_length);
     if (status == DAQMW::Sock::ERROR_FATAL) {
@@ -228,8 +236,8 @@ int RawDataReader::read_data_from_detectors()
         fatal_error_report(USER_DEFINED_ERROR1, "SOCKET FATAL ERROR");
     }
     else if (status == DAQMW::Sock::ERROR_TIMEOUT) {
-        std::cerr << "### Timeout: m_sock->readAll" << std::endl;
-        fatal_error_report(USER_DEFINED_ERROR2, "SOCKET TIMEOUT (DATA PART)");
+        std::cerr << "### Timeout: Data Read Timeout" << std::endl;
+        return DAQMW::Sock::ERROR_TIMEOUT;
     }
 
     // Finally, Read footer
@@ -240,13 +248,19 @@ int RawDataReader::read_data_from_detectors()
     }
     else if (status == DAQMW::Sock::ERROR_TIMEOUT) {
         // Header read timeout is not an error
-        fprintfwt(stderr, "Footer Read Timeout\n");
+        std::cerr << "### Timeout: Footer Read Timeout" << std::endl;
         return DAQMW::Sock::ERROR_TIMEOUT;
-    }    
-
-
+    }
 
     return data_length + HEADER_SIZE + FOOTER_SIZE;
+
+
+
+
+
+
+
+    return received_data_size;
 }
 
 int RawDataReader::set_data(unsigned int data_byte_size)
@@ -305,10 +319,6 @@ int RawDataReader::daq_run()
         if (ret > 0) {
             m_recv_byte_size = ret;
             set_data(m_recv_byte_size); // set data to OutPort Buffer
-        }
-        else if (ret == DAQMW::Sock::ERROR_TIMEOUT) {
-            // header read timed out.  Retry next daq_run().
-            return 0;
         }
     }
 
