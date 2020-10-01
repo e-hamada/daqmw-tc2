@@ -47,12 +47,17 @@ SampleMonitorコンポーネントはDAQ-Middlewareをセットすると
 にあわせる、描画するものを変更するなどの作業が必要になる。
 
 デコードルーチンのプログラムは昨日の課題の[ex06]で作成した。
-このプログラムを使う場合、RawDataPacket.hおよびRawDataPacket.cppをコピーし、さらに
-Makefileで
+このプログラムを使う場合、RawDataPacket.hおよびRawDataPacket.cppを利用する。
+これらのプログラムは~/daqmw-tc2/daqmw-tc2/daqmw/RawDataMonitorに置いてあるのコピーする。
+
+    % cp ~/daqmw-tc2/daqmw-tc2/daqmw/RawDataMonitor/RawDataPacket.h
+    % cp ~/daqmw-tc2/daqmw-tc2/daqmw/RawDataMonitor/RawDataPacket.c
+
+さらにMakefileで
 
     SRCS += RawDataPacket.cpp
 
-の行を追加する。
+の行を追加し、デコードルーチンのプログラム（RawDataPacket.hおよびRawDataPacket.cpp）を含めるように変更する。
 
 これでコードを書く準備ができた。あとはロジックを書き直せばよい。
 
