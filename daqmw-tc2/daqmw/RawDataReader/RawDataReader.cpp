@@ -224,8 +224,6 @@ int RawDataReader::read_data_from_detectors()
 
     int data_length = 0;
 
-    std::cerr << "### ERROR: TEST" << std::endl;
-
     // get data part length
     data_length = get_data_length(&m_data[0], HEADER_SIZE);
     
