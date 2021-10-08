@@ -113,7 +113,7 @@ samplePara.xmlを以下のように編集する。
 configureした後にログを見るとtest変数の値がログに記載される。
 
 
-なお、samplePara.xmlとsamplePara.xmlの正解はdaqmw-tc2/daqmw/の下に置かれている
+なお、SampleReaderParaとsamplePara.xmlの正解はdaqmw-tc2/daqmw/の下に置かれている
 
 課題
 ----
