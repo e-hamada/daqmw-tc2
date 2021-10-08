@@ -34,7 +34,7 @@
                     <hostAddr>127.0.0.1</hostAddr>
                     <hostPort>50000</hostPort>
                     <instName>SampleMonitor0.rtc</instName>
-                    <execPath>/home/daq/MyDaq/SampleMonitor2/SampleMonitorComp</execPath>
+                    <execPath>/home/daq/MyDaq/SampleMonitorSize/SampleMonitorComp</execPath>
                     <confFile>/tmp/daqmw/rtc.conf</confFile>
                     <startOrd>1</startOrd>
                     <inPorts>
