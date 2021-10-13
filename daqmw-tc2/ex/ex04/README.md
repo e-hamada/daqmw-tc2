@@ -108,8 +108,8 @@ Dispatcherの機能は1つのコンポーネントからデータを受け取り
 4comps.xmlを編集して、4つのコンポーネントから構成されるシステムのためのコンフィグレーションファイル
 となるよう編集する。
 
-
-コンフィグレーションファイルにおいてDispatcherコンポーネントの部分は以下のようになる。
+1.コンフィグレーションファイルにおいてDispatcherコンポーネントとLoggerコンポーネントを追加する。 
+Dispatcherコンポーネントの部分は以下のようになる。
 
             <component cid="Dispatcher0">
                <hostAddr>127.0.0.1</hostAddr>
@@ -128,10 +128,13 @@ Dispatcherの機能は1つのコンポーネントからデータを受け取り
                <params/>
             </component>
 
+Loggerコンポーネントはreader-logger.xmlのSampleLoggerの部分を利用する。
 
-
+2.
 dispatcherコンポーネントは2個のアウトポートがあるため、上のDispatcherコンポーネントの部分には、
-outPortが2つ記載されている。このアウトポートがSampleLoggerとSampleMonitorのインポートに接続されることになる。
+outPortが2つ記載されている。このアウトポートがSampleLoggerとSampleMonitorのインポートに接続されるように修正する。
+
+3.startOrdを編集する。
 
 
 
