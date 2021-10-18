@@ -285,8 +285,8 @@ SampleMonitorではヒストグラムのための処理が記載されていた�
 
 #### daq_unconfigure()
 
-SampleReaderではヒストグラムデータ、RawDataMonitorではグラフデータを
-deleteする(daq_start()でnewしていたのでdeleteしないと多数回start/stopを
+SampleReaderではヒストグラムデータをdeleteしていた。
+RawDataMonitorではグラフデータをdeleteする(daq_start()でnewしていたのでdeleteしないと多数回start/stopを
 繰り返したときにメモリーを浪費する)。
 
 
