@@ -364,10 +364,10 @@ https://github.com/h-sendai/daqmw-tc-network-2/tree/master/emulator
     % cd Dispatcher
     % make
 
-4個のDAQコンポーネントを使う場合のコンフィギュレーションファイルを利用する。
+4個のDAQコンポーネント(RawDataReader,Dispatcher,RawDataLogger,RawDataMonitor)を使う場合のコンフィギュレーションファイルを作成し、実行する。
 
-    % cd ~/RawData
-    % cp ~/daqmw-tc2/daqmw-tc2/daqmw/4comps.xml .
+#    % cd ~/RawData
+#    % cp ~/daqmw-tc2/daqmw-tc2/daqmw/4comps.xml .
 
 
-4compsからDAQ-Middlwareを起動させ、モニターしながらデータも保存していることを確認する。
+モニターしながらデータも保存していることを確認する。
