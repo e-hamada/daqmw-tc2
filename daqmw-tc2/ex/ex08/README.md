@@ -53,8 +53,15 @@ SampleMonitorコンポーネントはDAQ-Middlewareをセットすると
     % cp ~/daqmw-tc2/daqmw-tc2/daqmw/RawDataMonitor/RawDataPacket.h .
     % cp ~/daqmw-tc2/daqmw-tc2/daqmw/RawDataMonitor/RawDataPacket.cpp .
 
-さらにMakefileで
+さらにMakefileでコンパイルソースコードを追加する。
 
+    (修正前）
+    SRCS += $(COMP_NAME).cpp
+    SRCS += $(COMP_NAME)Comp.cpp
+
+    （修正後）
+    SRCS += $(COMP_NAME).cpp
+    SRCS += $(COMP_NAME)Comp.cpp
     SRCS += RawDataPacket.cpp
 
 の行を追加し、デコードルーチンのプログラム（RawDataPacket.hおよびRawDataPacket.cpp）を含めるように変更する。
