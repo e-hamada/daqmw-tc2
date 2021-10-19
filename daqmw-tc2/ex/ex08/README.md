@@ -317,7 +317,7 @@ RawDataMonitorではグラフデータをdeleteする(daq_start()でnewしてい
         return 0;
     }
 
-#### decode_data
+#### decode_data()
 SampleMonitorでは、デコードするための関数としてdecode_dataを定義していた。この関数は必要ないので削除すること。ヘッダファイルにはこの関数を定義していないため、残ったままだとMakeのときにエラーになってしまう。
 
 
