@@ -366,8 +366,8 @@ https://github.com/h-sendai/daqmw-tc-network-2/tree/master/emulator
 
 4個のDAQコンポーネント(RawDataReader,Dispatcher,RawDataLogger,RawDataMonitor)を使う場合のコンフィギュレーションファイルを作成し、実行する。
 
-#    % cd ~/RawData
-#    % cp ~/daqmw-tc2/daqmw-tc2/daqmw/4comps.xml .
+<!--    % cd ~/RawData
+    % cp ~/daqmw-tc2/daqmw-tc2/daqmw/4comps.xml .-->
 
 
 モニターしながらデータも保存していることを確認する。
