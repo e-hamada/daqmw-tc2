@@ -51,7 +51,7 @@ SampleMonitorコンポーネントはDAQ-Middlewareをセットすると
 これらのプログラムは~/daqmw-tc2/daqmw-tc2/daqmw/RawDataMonitorに置いてあるのコピーする。
 
     % cp ~/daqmw-tc2/daqmw-tc2/daqmw/RawDataMonitor/RawDataPacket.h .
-    % cp ~/daqmw-tc2/daqmw-tc2/daqmw/RawDataMonitor/RawDataPacket.c .
+    % cp ~/daqmw-tc2/daqmw-tc2/daqmw/RawDataMonitor/RawDataPacket.cpp .
 
 さらにMakefileで
 
