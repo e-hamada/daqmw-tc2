@@ -251,14 +251,6 @@ int RawDataReader::read_data_from_detectors()
     }
 
     return data_length + HEADER_SIZE + FOOTER_SIZE;
-
-
-
-
-
-
-
-    return received_data_size;
 }
 
 int RawDataReader::set_data(unsigned int data_byte_size)
