@@ -106,6 +106,8 @@ SampleReaderの場合、read_data_from_detectors関数でreadAll関数で1024BYT
 
 SampleReaderの場合、SampleReader.hのm_dataのサイズは1024BYTEになっていた。このままだと、オーバーフローを起こしてしまうため、1024\*1024にする。
 
+また、必要であれば、ヘッダのサイズ（=12BYTE)やフッタのサイズ（=4BYTE)を定義すること
+
 - Loggerについて
 
 SampleLoggerでは、上段から受け取ったデータをすべて保存していた。今回もその処理で問題ないので、
