@@ -91,7 +91,7 @@ RawDataReaderコンポーネントの作成
 
 このRawDataReaderをボードからデータを受信できるように編集すること。
 
-
+- RawDataReader.cppの編集
 SampleReaderの場合、read_data_from_detectors関数でreadAll関数で1024BYTEだけ読み込み、
 そのデータをm_dataに格納していた。
 
@@ -101,6 +101,10 @@ SampleReaderの場合、read_data_from_detectors関数でreadAll関数で1024BYT
 最後にreadAll関数でフッタのデータ長(4BYTE)の分だけデータを読み込む。
 それらのデータをm_dataに格納すれば良い。
 
+- RawDataReader.hの編集
+SampleReaderの場合、SampleReader.hのm_dataのサイズは1024BYTEになっていた。このままだと、オーバーフローを起こしてしまうため、1024\*1024にする。
+
+- Loggerについて
 SampleLoggerでは、上段から受け取ったデータをすべて保存していた。今回もその処理で問題ないので、
 RawDataLogger（SampleLoggerをコピーしたコンポーネント）についてはコンポーネント名の変更以外は編集する必要はない。
 
